@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -6,11 +7,75 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
         <title>Kromaticoo</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="{% static '/style.css' %}">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+            #hero {
+                background-image: url("{% static '/background_1.png' %}");
+                height: 90vh;
+                width: 100%;
+                background-size: cover;
+                background-position: top 25% right 0;
+                padding: 0 80px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+            }
+            
+            #hero h4{
+                padding-bottom: 15px;
+            }
+            
+            #hero h1{
+                color: #55CAAB;
+            }
+            
+            #hero button {
+                display: inline-block;
+                border-radius: 4px;
+                background-color: black;
+                border: none;
+                color: #FFFFFF;
+                text-align: center;
+                font-size: 26px;
+                padding: 20px;
+                width: 300px;
+                transition: all 0.5s;
+                cursor: pointer;
+                margin: 5px;
+              }
+              
+            #hero button span {
+                cursor: pointer;
+                display: inline-block;
+                position: relative;
+                transition: 0.5s;
+              }
+              
+            #hero button span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+              }
+              
+            #hero button:hover span {
+                padding-right: 25px;
+              }
+              
+            #hero button:hover span:after {
+                opacity: 1;
+                right: 0;
+              }
+        </style>
     </head>
     <body>
         <section id="header">
-            <a href="#"><img src="img/logo.png" class="logo" alt="" height="42" width="42"></a>
+            <a href="#"><img src="{% static '/logo.png' %}" class="logo" alt="" height="42" width="42"></a>
 
             <div>
                 <ul id="navbar">
@@ -24,7 +89,7 @@
         </section>
 
         <section id="hero">
-            <h4>Descuble la elegancia en cada prenda</h4>
+            <h4>Descubre la elegancia en cada prenda</h4>
             <h2>Explora nuestra colección</h2>
             <h1>Estilos que se ajustan a ti</h1>
             <p>Encuentra la perfecta combinación de moda y funcionalidad</p>
@@ -35,15 +100,19 @@
             <h2>Productos Pouplares</h2>
             <p>Top ventas: estilos que enamoran. ¡Encuentra tu look ahora!</p>
             <div class="pro-container">
+                {% for product in products %}
+                {% if product.is_popular == True and product.discontinued == False %}
                 <div class="pro">
-                    <img src="img/Ejemplo1.png" alt="">
+                    <img src={{ product.image.url }} alt="" height="250" width="250">
                     <div class="des">
-                        <span>Andrea 991025</span>
-                        <h5>Boxer Microfibra Negro</h5>
-                        <h4>$29.900</h4>
+                        <span>{{ product.ref }}</span>
+                        <h5>{{ product.title }}</h5>
+                        <h4>${{ product.price }}</h4>
                     </div>
-                    <a href="https://w.app/H8pYPe"><i class="fal fa-shopping-cart cart"></i></a>
+                    <a href={{ product.url }}><i class="fal fa-shopping-cart cart"></i></a>
                 </div>
+                {% endif %}
+                {% endfor %}
             </div>
         </section>
 
