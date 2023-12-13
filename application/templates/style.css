@@ -160,3 +160,75 @@ body {
     opacity: 1;
     right: 0;
   }
+
+/* ---------------------------------------- */
+
+#populars_products {
+    text-align: center;
+}
+
+#populars_products .pro-container{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    flex-wrap: wrap;
+}
+
+#populars_products .pro{
+    width: 23%;
+    min-width: 250px;
+    padding: 10px 12px;
+    border: 1px solid #F4F8F7;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 20px 20px 30px rgba(0,0,0,0.02);
+    margin: 15px 0;
+    transition: 0.2s ease;
+    position: relative;
+}
+
+#populars_products .pro:hover{
+    box-shadow: 20px 20px 30px rgba(0,0,0,0.06);
+}
+
+#populars_products .pro img{
+    width: 100%;
+    border-radius: 20px;
+}
+
+#populars_products .pro .des{
+    text-align: start;
+    padding: 10px 0;
+}
+
+#populars_products .pro .des span{
+    color: grey;
+    font-size: 12px;
+}
+
+#populars_products .pro .des h5{
+    padding-top: 7px;
+    color: black;
+    font-size: 14px;
+}
+
+#populars_products .pro .des h4{
+    padding-top: 7px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #55CAAB;
+}
+
+#populars_products .pro .cart{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50px;
+    background-color: whitesmoke;
+    font-weight: 500;
+    color: #55CAAB;
+    border: 1px solid gainsboro;
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+}
