@@ -6,3 +6,15 @@ from .models import products
 def home(request):
     productss = products.objects.all()
     return render(request, 'home.html',{'products':productss})
+
+def new(request):
+    productss = products.objects.all()
+    return render(request, 'new.html',{'products':productss})
+
+def underwear(request):
+    productss = products.objects.all()
+    return render(request, 'underwear.html',{'products':productss})
+
+def sport(request):
+    productss = products.objects.all()
+    return render(request, 'sport.html',{'products':productss})

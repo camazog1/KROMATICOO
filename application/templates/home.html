@@ -7,7 +7,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
         <title>Kromaticoo</title>
-        <link rel="stylesheet" href="{% static '/style.css' %}">
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
@@ -23,55 +22,9 @@
                 align-items: flex-start;
                 justify-content: center;
             }
-            
-            #hero h4{
-                padding-bottom: 15px;
-            }
-            
-            #hero h1{
-                color: #55CAAB;
-            }
-            
-            #hero button {
-                display: inline-block;
-                border-radius: 4px;
-                background-color: black;
-                border: none;
-                color: #FFFFFF;
-                text-align: center;
-                font-size: 26px;
-                padding: 20px;
-                width: 300px;
-                transition: all 0.5s;
-                cursor: pointer;
-                margin: 5px;
-              }
-              
-            #hero button span {
-                cursor: pointer;
-                display: inline-block;
-                position: relative;
-                transition: 0.5s;
-              }
-              
-            #hero button span:after {
-                content: '\00bb';
-                position: absolute;
-                opacity: 0;
-                top: 0;
-                right: -20px;
-                transition: 0.5s;
-              }
-              
-            #hero button:hover span {
-                padding-right: 25px;
-              }
-              
-            #hero button:hover span:after {
-                opacity: 1;
-                right: 0;
-              }
+
         </style>
+        <link rel="stylesheet" href="{% static '/style.css' %}">
     </head>
     <body>
         <section id="header">
@@ -79,21 +32,26 @@
 
             <div>
                 <ul id="navbar">
-                    <li><a class="active" href="home.html">HOME</a></li>
-                    <li><a href="new.html">NUEVO</a></li>
-                    <li><a href="underwear.html">INTERIOR</a></li>
-                    <li><a href="sport.html">DEPORTIVO</a></li>
-                    <li><a href="https://w.app/H8pYPe"><i class="far fa-shopping-bag"></i></a></li>
+                    <li><a class="active" href={% url 'home' %}>HOME</a></li>
+                    <li><a href={% url 'new' %}>NUEVO</a></li>
+                    <li><a href={% url 'underwear' %}>INTERIOR</a></li>
+                    <li><a href={% url 'sport' %}>DEPORTIVO</a></li>
+                    <li id="lg-bag"><a href="https://api.whatsapp.com/send?phone=+573006029411&text=%C2%A1Hola!%20Estoy%20interesad@%20en%20ver%20su%20catalogo.%20"><i class="far fa-shopping-bag"></i></a></li>
+                    <a href="#" id="close"><i class="far fa-times"></i></a>
                 </ul>
+            </div>
+            <div id="mobile">
+                <a href="https://api.whatsapp.com/send?phone=+573006029411&text=%C2%A1Hola!%20Estoy%20interesad@%20en%20ver%20su%20catalogo.%20"><i class="far fa-shopping-bag"></i></a>
+                <i id="bar" class="fas fa-outdent"></i>
             </div>
         </section>
 
         <section id="hero">
-            <h4>Descubre la elegancia en cada prenda</h4>
-            <h2>Explora nuestra colección</h2>
-            <h1>Estilos que se ajustan a ti</h1>
+            <h4>Descubre la elegancia</h4>
+            <h2>Explora</h2>
+            <h1>Estilos</h1>
             <p>Encuentra la perfecta combinación de moda y funcionalidad</p>
-            <button style="vertical-align:middle"><span>¡Compra Ahora!</span></button>
+            <button onclick="location.href='#populars_products'" style="vertical-align:middle"><span>¡Compra Ahora!</span></button>
         </section>
 
         <section id="populars_products" class="section-p1">
@@ -116,6 +74,41 @@
             </div>
         </section>
 
-        <script src="script.js"></script>
+        <footer class="section-p1">
+            <div class="col">
+                <img src="{% static '/logo.png' %}" alt="" height="42" width="42" class="logo">
+                <h4>Contact</h4>
+                <p><strong>Dirección: </strong>La Candelaria, Medellín, Antioquia</p>
+                <p><strong>Numero: </strong>300 602 9411</p>
+                <p><strong>Horas: </strong>09:00 - 06:00, Lunes - Sabado </p>
+                <div class="follow">
+                    <h4>Follow us</h4>
+                    <div class="icon">
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-pinterest-p"></i>
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <h4>Nosotros</h4>
+                <a href="#">Nosotros</a>
+                <a href="#">Domicilios</a>
+                <a href="#">Politicas de privacidad</a>
+                <a href="#">Terminos y condiciones</a>
+                <a href="#">Contactanos</a>
+            </div>
+
+            <div class="col">
+                <h4>Secured Payment Gateways</h4>
+                <img src="{% static '/pay.png' %}" alt="">
+            </div>
+
+        </footer>
+
+        <script src="{% static '/script.js' %}"></script>
     </body>
 </html>
