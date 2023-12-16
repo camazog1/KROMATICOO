@@ -11,29 +11,27 @@
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-            #hero {
-                background-image: url("{% static '/background_1.png' %}");
-                height: 90vh;
+            #hero-1 {
+                background-image: url("{% static '/banner1.png' %}");
+                height: 50vh;
                 width: 100%;
                 background-size: cover;
-                background-position: top 25% right 0;
-                padding: 0 80px;
                 display: flex;
-                flex-direction: column;
-                align-items: flex-start;
                 justify-content: center;
+                padding: 14px;
             }
 
         </style>
         <link rel="stylesheet" type="text/css" href="{% static '/codes/style.css' %}">
     </head>
     <body>
+
         <section id="header">
             <a href="#"><img src="{% static '/logo.png' %}" class="logo" alt="" height="42" width="42"></a>
 
             <div>
                 <ul id="navbar">
-                    <li><a class="active" href={% url 'home' %}>HOME</a></li>
+                    <li><a href={% url 'home' %}>HOME</a></li>
                     <li><a href={% url 'new' %}>NUEVO</a></li>
                     <li><a href={% url 'underwear' %}>INTERIOR</a></li>
                     <li><a href={% url 'sport' %}>DEPORTIVO</a></li>
@@ -47,28 +45,48 @@
             </div>
         </section>
 
-        <section id="hero">
-            <h4>Descubre la elegancia</h4>
-            <h2>Explora</h2>
-            <h1>Estilos</h1>
-            <p>Encuentra la perfecta combinación de moda y funcionalidad</p>
-            <button onclick="location.href='#populars_products'" style="vertical-align:middle"><span>¡Compra Ahora!</span></button>
+        <section id="prodetails" class="section-p1">
+            <div class="single-pro-image">
+                <img src={{ product.img1.url }} width="100%" id="MainImg" alt="">
+                <div class="small-img-group">
+                    <div class="small-img-col">
+                        <img src={{ product.img1.url }} width="100%" class="small-img" alt="">
+                    </div>
+                    <div class="small-img-col">
+                        <img src={{ product.img2.url }} width="100%" class="small-img" alt="">
+                    </div>
+                    <div class="small-img-col">
+                        <img src={{ product.img3.url }} width="100%" class="small-img" alt="">
+                    </div>
+                    <div class="small-img-col">
+                        <img src={{ product.img4.url }} width="100%" class="small-img" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="single-pro-details">
+                <h6>Producto/{{product.ref}}</h6>
+                <h4>{{ product.title }}</h4>
+                <h2>${{ product.price }}</h2>
+                <a href="http://wa.link/py0o2q" class="boton">¡Comprar Ahora!</a>
+                <h4>Detalles del producto</h4>
+                <span>{{ product.desc }}</span>
+            </div>
         </section>
 
         <section id="populars_products" class="section-p1">
-            <h2>Productos Pouplares</h2>
-            <p>Top ventas: estilos que enamoran. ¡Encuentra tu look ahora!</p>
+            <h2>Productos Nuevos</h2>
+            <p>Explora las novedades: estilo fresco, tendencia inigualable. Descubre lo último en moda que te cautivará.</p>
             <div class="pro-container">
-                {% for product in products %}
-                {% if product.is_popular == True and product.discontinued == False %}
+                {% for product1 in products|slice:":4" %}
+                {% if product.is_new == True and product.discontinued == False %}
                 <div class="pro">
-                    <img src={{ product.img1.url }} alt="" height="250" width="250">
+                    <img src={{ product1.img1.url }} alt="" height="250" width="250">
                     <div class="des">
-                        <span>{{ product.ref }}</span>
-                        <h5>{{ product.title }}</h5>
-                        <h4>${{ product.price }}</h4>
+                        <span>{{ product1.ref }}</span>
+                        <h5>{{ product1.title }}</h5>
+                        <h4>${{ product1.price }}</h4>
                     </div>
-                    <a href={% url 'product' product.ref %}><i class="fal fa-shopping-cart cart"></i></a>
+                    <a href={% url 'product' product1.ref %}><i class="fal fa-shopping-cart cart"></i></a>
                 </div>
                 {% endif %}
                 {% endfor %}
@@ -109,6 +127,27 @@
             </div>
 
         </footer>
+
+        <script>
+            var MainImg = document.getElementById("MainImg");
+            var smallimg = document.getElementsByClassName("small-img");
+
+            smallimg[0].onclick = function(){
+                MainImg.src = smallimg[0].src;
+            }
+
+            smallimg[1].onclick = function(){
+                MainImg.src = smallimg[1].src;
+            }
+
+            smallimg[2].onclick = function(){
+                MainImg.src = smallimg[2].src;
+            }
+
+            smallimg[3].onclick = function(){
+                MainImg.src = smallimg[3].src;
+            }
+        </script>
 
         <script src="{% static '/script.js' %}"></script>
     </body>

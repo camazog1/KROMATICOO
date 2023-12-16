@@ -4,10 +4,13 @@ from django.db import models
 
 class products(models.Model):
     title = models.CharField(max_length=100)
-    ref = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='img/')
+    ref = models.CharField(max_length=100, primary_key=True)
+    desc = models.CharField(max_length=1000)
     price = models.IntegerField()
-    url = models.URLField(blank=True)
+    img1 = models.ImageField(upload_to='img/')
+    img2 = models.ImageField(upload_to='img/')
+    img3 = models.ImageField(upload_to='img/')
+    img4 = models.ImageField(upload_to='img/')
     is_popular = models.BooleanField()
     is_underwear = models.BooleanField()
     is_sport = models.BooleanField()

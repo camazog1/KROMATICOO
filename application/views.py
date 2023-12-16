@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse
 from .models import products
 
@@ -18,3 +18,8 @@ def underwear(request):
 def sport(request):
     productss = products.objects.all()
     return render(request, 'sport.html',{'products':productss})
+
+def product(request, ref):
+    product = get_object_or_404(products, ref=ref)
+    productss = products.objects.all()
+    return render(request, 'product.html', {'product': product, 'products':productss})

@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href={% static '/logo.png' %} type="image/x-icon">
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
         <title>Kromaticoo</title>
         <style>
@@ -24,7 +25,7 @@
             }
 
         </style>
-        <link rel="stylesheet" href="{% static '/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/codes/style.css' %}">
     </head>
     <body>
         <section id="header">
@@ -45,6 +46,61 @@
                 <i id="bar" class="fas fa-outdent"></i>
             </div>
         </section>
+
+        <section id="populars_products" class="section-p1">
+            <h2>Productos Deportivos</h2>
+            <p>Encuentra la combinación perfecta entre comodidad y rendimiento, ¿listo para brillar en cada movimiento?</p>
+            <div class="pro-container">
+                {% for product in products %}
+                {% if product.is_sport == True and product.discontinued == False %}
+                <div class="pro">
+                    <img src={{ product.img1.url }} alt="" height="250" width="250">
+                    <div class="des">
+                        <span>{{ product.ref }}</span>
+                        <h5>{{ product.title }}</h5>
+                        <h4>${{ product.price }}</h4>
+                    </div>
+                    <a href={% url 'product' product.ref %}><i class="fal fa-shopping-cart cart"></i></a>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+
+        <footer class="section-p1">
+            <div class="col">
+                <img src="{% static '/logo.png' %}" alt="" height="42" width="42" class="logo">
+                <h4>Contact</h4>
+                <p><strong>Dirección: </strong>La Candelaria, Medellín, Antioquia</p>
+                <p><strong>Numero: </strong>300 602 9411</p>
+                <p><strong>Horas: </strong>09:00 - 06:00, Lunes - Sabado </p>
+                <div class="follow">
+                    <h4>Follow us</h4>
+                    <div class="icon">
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-pinterest-p"></i>
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <h4>Nosotros</h4>
+                <a href="#">Nosotros</a>
+                <a href="#">Domicilios</a>
+                <a href="#">Politicas de privacidad</a>
+                <a href="#">Terminos y condiciones</a>
+                <a href="#">Contactanos</a>
+            </div>
+
+            <div class="col">
+                <h4>Secured Payment Gateways</h4>
+                <img src="{% static '/pay.png' %}" alt="">
+            </div>
+
+        </footer>
 
         <script src="{% static '/script.js' %}"></script>
     </body>

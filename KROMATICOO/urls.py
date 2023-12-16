@@ -27,6 +27,7 @@ urlpatterns = [
     path('/new', AViews.new, name='new'),
     path('/underwear', AViews.underwear, name='underwear'),
     path('/sport', AViews.sport, name='sport'),
+    path('/product/<ref>', AViews.product, name='product'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
