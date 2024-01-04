@@ -34,9 +34,9 @@
             <div>
                 <ul id="navbar">
                     <li><a href={% url 'home' %}>HOME</a></li>
-                    <li><a href={% url 'new' %}>NUEVO</a></li>
-                    <li><a href={% url 'underwear' %}>INTERIOR</a></li>
-                    <li><a class="active" href={% url 'sport' %}>DEPORTIVO</a></li>
+                    <li><a href={% url 'new' %}>NEW</a></li>
+                    <li><a href={% url 'underwear' %}>UNDERWEAR</a></li>
+                    <li><a class="active" href={% url 'sport' %}>SPORTS</a></li>
                     <li id="lg-bag"><a href="https://api.whatsapp.com/send?phone=+573006029411&text=%C2%A1Hola!%20Estoy%20interesad@%20en%20ver%20su%20catalogo.%20"><i class="far fa-shopping-bag"></i></a></li>
                     <a href="#" id="close"><i class="far fa-times"></i></a>
                 </ul>
@@ -48,8 +48,8 @@
         </section>
 
         <section id="populars_products" class="section-p1">
-            <h2>Productos Deportivos</h2>
-            <p>Encuentra la combinación perfecta entre comodidad y rendimiento, ¿listo para brillar en cada movimiento?</p>
+            <h2>Sport Products</h2>
+            <p>Find the perfect combination of comfort and performance. Ready to shine in every movement?</p>
             <div class="pro-container">
                 {% for product in products %}
                 {% if product.is_sport == True and product.discontinued == False %}

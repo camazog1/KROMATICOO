@@ -32,9 +32,9 @@
             <div>
                 <ul id="navbar">
                     <li><a href={% url 'home' %}>HOME</a></li>
-                    <li><a href={% url 'new' %}>NUEVO</a></li>
-                    <li><a href={% url 'underwear' %}>INTERIOR</a></li>
-                    <li><a href={% url 'sport' %}>DEPORTIVO</a></li>
+                    <li><a href={% url 'new' %}>NEW</a></li>
+                    <li><a href={% url 'underwear' %}>UNDERWEAR</a></li>
+                    <li><a href={% url 'sport' %}>SPORT</a></li>
                     <li id="lg-bag"><a href="https://api.whatsapp.com/send?phone=+573006029411&text=%C2%A1Hola!%20Estoy%20interesad@%20en%20ver%20su%20catalogo.%20"><i class="far fa-shopping-bag"></i></a></li>
                     <a href="#" id="close"><i class="far fa-times"></i></a>
                 </ul>
@@ -67,15 +67,15 @@
                 <h6>Producto/{{product.ref}}</h6>
                 <h4>{{ product.title }}</h4>
                 <h2>${{ product.price }}</h2>
-                <a href="http://wa.link/py0o2q" class="boton">¡Comprar Ahora!</a>
-                <h4>Detalles del producto</h4>
+                <a href="http://wa.link/py0o2q" class="boton">¡Buy Now!</a>
+                <h4>Products Details</h4>
                 <span>{{ product.desc }}</span>
             </div>
         </section>
 
         <section id="populars_products" class="section-p1">
-            <h2>Productos Nuevos</h2>
-            <p>Explora las novedades: estilo fresco, tendencia inigualable. Descubre lo último en moda que te cautivará.</p>
+            <h2>New Products</h2>
+            <p>Explore what's new: Fresh styles, unmatched trend. Discover the latest fashion that will captivate you.</p>
             <div class="pro-container">
                 {% for product1 in products|slice:":4" %}
                 {% if product.is_new == True and product.discontinued == False %}
