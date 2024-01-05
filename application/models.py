@@ -7,6 +7,7 @@ class products(models.Model):
     ref = models.CharField(max_length=100, primary_key=True)
     desc = models.CharField(max_length=1000)
     price = models.IntegerField()
+    price_dolar = models.DecimalField(max_digits=10, decimal_places=2)
     img1 = models.ImageField(upload_to='img/')
     img2 = models.ImageField(upload_to='img/')
     img3 = models.ImageField(upload_to='img/')

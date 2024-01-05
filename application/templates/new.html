@@ -12,13 +12,17 @@
             @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
             #hero {
-                background-image: url("{% static '/banner1.png' %}");
+                background-image: url("{% static 'banners/banner_1.png' %}");
                 height: 50vh;
                 width: 100%;
                 background-size: cover;
                 display: flex;
                 justify-content: center;
                 padding: 14px;
+            }
+            #us {
+                color: grey;
+                margin-top: 6px;
             }
 
         </style>
@@ -55,11 +59,12 @@
                 {% for product in products %}
                 {% if product.is_new == True and product.discontinued == False %}
                 <div class="pro">
-                    <img src={{ product.img1.url }} alt="" height="250" width="250">
+                    <a href={% url 'product' product.ref %}><img src={{ product.img1.url }} alt="" height="250" width="250"></a>
                     <div class="des">
                         <span>{{ product.ref }}</span>
                         <h5>{{ product.title }}</h5>
                         <h4>${{ product.price }}</h4>
+                        <h6 id="us">${{ product.price_dolar }} USD</h6>
                     </div>
                     <a href={% url 'product' product.ref %}><i class="fal fa-shopping-cart cart"></i></a>
                 </div>
@@ -72,8 +77,8 @@
             <div class="col">
                 <img src="{% static '/logo.png' %}" alt="" height="42" width="42" class="logo">
                 <h4>Contact</h4>
-                <p><strong>Dirección: </strong>La Candelaria, Medellín, Antioquia</p>
-                <p><strong>Numero: </strong>300 602 9411</p>
+                <p><strong>Address: </strong>La Candelaria, Medellín, Antioquia</p>
+                <p><strong>Number: </strong>315 510 9892</p>
                 <p><strong>Horas: </strong>09:00 - 06:00, Lunes - Sabado </p>
                 <div class="follow">
                     <h4>Follow us</h4>
@@ -88,12 +93,12 @@
             </div>
 
             <div class="col">
-                <h4>Nosotros</h4>
-                <a href="#">Nosotros</a>
-                <a href="#">Domicilios</a>
-                <a href="#">Politicas de privacidad</a>
-                <a href="#">Terminos y condiciones</a>
-                <a href="#">Contactanos</a>
+                <h4>About Us</h4>
+                <a href="#">About Us</a>
+                <a href="#">Addresses</a>
+                <a href="#">Private Polices</a>
+                <a href="#">Terms and Conditions</a>
+                <a href="#">Contact Us</a>
             </div>
 
             <div class="col">
